@@ -1,0 +1,1 @@
+# aseprite_hitbox_data_exporter
