@@ -16,20 +16,22 @@ Just run the script from the Aseprite File->Scripts menu.
 The dialogue will ask for the exported file location and names of your layers.
 
 Example of json data
-	{
-		"layerName": {
-			"tag": [
-				{
-					"bounds": {
-						"height": 27,
-						"x": 51,
-						"y": 18,
-						"width": 11
-					},
-					"frameIndex": 0
-				}
-			]
-		}
+````
+ {
+	"layerName": {
+		"tag": [
+			{
+				"bounds": {
+					"height": 27,
+					"x": 51,
+					"y": 18,
+					"width": 11
+				},
+				"frameIndex": 0
+			}
+		]
 	}
+}
+````
 
 Note that the frame index is the indexed value of the frame in the tagged animation set, not the frame number of the aseprite timeline.
