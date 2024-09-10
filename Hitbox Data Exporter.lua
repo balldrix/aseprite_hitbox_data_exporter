@@ -39,9 +39,12 @@ local function exportData()
 			if layer.name == data.hitboxName or layer.name == data.hurtboxName or layer.name == data.pushboxName then				
 				local tags = {}
 				for j, tag in ipairs(spr.tags) do
-					tags[tag.name] = getFrameData(layer, tag.fromFrame.frameNumber, tag.toFrame.frameNumber);
+					local frameData = getFrameData(layer, tag.fromFrame.frameNumber, tag.toFrame.frameNumber)
+					if next(frameData) ~= nil then
+						tags[tag.name] = frameData
+					end
 				end
-				layers[layer.name] = tags					
+					layers[layer.name] = tags					
 			end
 			exportResults = layers
 		end
