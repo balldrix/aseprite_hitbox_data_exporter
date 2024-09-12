@@ -32,24 +32,27 @@ local function exportData()
 		app.alert("Please choose an output path")
 	else
 		local data = dlg.data;
-		local exportResults
-		local layers = {}
+		local layers = { }
 	
 		for i, layer in ipairs(spr.layers) do
 			if layer.name == data.hitboxName or layer.name == data.hurtboxName or layer.name == data.pushboxName then				
-				local tags = {}
+				local tags = { animationName, frames}
 				for j, tag in ipairs(spr.tags) do
 					local frameData = getFrameData(layer, tag.fromFrame.frameNumber, tag.toFrame.frameNumber)
 					if next(frameData) ~= nil then
-						tags[tag.name] = frameData
+						tag = { 
+							animationName = tag.name, 
+							frames = frameData 
+						}
+						table.insert(tags, tag)
 					end
 				end
-					layers[layer.name] = tags					
+				layerData = { hitBoxName = layer.name, tagData = tags }
+				table.insert(layers, layerData)
 			end
-			exportResults = layers
 		end
 		
-		write_json_data(filepath, exportResults)
+		write_json_data(filepath, layers)
 		app.alert("File exported to " .. filepath)
 
 		dlg:close()

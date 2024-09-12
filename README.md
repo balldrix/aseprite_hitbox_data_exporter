@@ -13,24 +13,35 @@ Download the zip file from the releases page and extract the files to your Asepr
 
 ## How to use
 Just run the script from the Aseprite File->Scripts menu.
-The dialogue will ask for the exported file location and names of your layers.
+The dialogue will ask for the exported file location and names of your layers. Clicking ok will create a json file with array of the following data:
 
-Example of json data
 ````
- {
-	"layerName": {
-		"tag": [
-			{
-				"bounds": {
-					"height": 27,
-					"x": 51,
-					"y": 18,
-					"width": 11
-				},
-				"frameIndex": 0
-			}
-		]
-	}
+{
+  "hitBoxName": "pushbox",
+  "tagData": [
+    {
+      "animationName": "idle",
+      "frames": [
+        {
+          "bounds": {
+            "height": 4,
+            "x": 48,
+            "y": 43,
+            "width": 17
+          },
+          "frameIndex": 0
+        },
+        {
+          "bounds": {
+            "height": 4,
+            "x": 48,
+            "y": 43,
+            "width": 17
+          },
+          "frameIndex": 1
+        }
+      ]
+    }
 }
 ````
 
