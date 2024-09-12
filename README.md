@@ -46,3 +46,5 @@ The dialogue will ask for the exported file location and names of your layers. C
 ````
 
 Note that the frame index is the indexed value of the frame in the tagged animation set, not the frame number of the aseprite timeline.
+
+I've included an example file ''''example.json'''' so you know what to expect.
