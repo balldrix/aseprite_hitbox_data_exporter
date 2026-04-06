@@ -1,6 +1,23 @@
+local function getScriptsFolder()
+    if os.getenv('APPDATA') then
+        -- Windows
+        return os.getenv('APPDATA') .. "/Aseprite/scripts/"
+    elseif os.getenv('HOME') then
+        local home = os.getenv('HOME')
+        -- Check if macOS (has /Library) or Linux
+        local f = io.open(home .. "/Library", "r")
+        if f then
+            f:close()
+            return home .. "/Library/Application Support/Aseprite/scripts/"
+        else
+            return home .. "/.config/aseprite/scripts/"
+        end
+    end
+end
+
 local dlg = Dialog { title = "Hitbox Exporter" }
 local filepath = ""
-local scriptsFolder = os.getenv('APPDATA') .. "/Aseprite/scripts/"
+local scriptsFolder = getScriptsFolder()
 
 local spr = app.activeSprite
 if not spr then return print "No active sprite" end
